@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>גלריה</title>
+
 <link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:18px;
+margin-top:40px;
+}
+
+.gallery-grid img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+cursor:pointer;
+transition:.2s;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.03);
+}
+</style>
+
 </head>
+
 <body>
 
 <header class="site-header">
 <div class="container">
+
 <strong>משפחת גולדשמיט</strong>
+
 <nav class="nav">
 <a href="index.html">בית</a>
 <a href="gallery.html">גלריה</a>
@@ -18,24 +48,53 @@
 <a href="family.html">משפחה</a>
 <a href="memories.html">זכרונות</a>
 </nav>
+
 </div>
 </header>
 
-
 <section class="section">
+
 <div class="container">
-<h1>גלריה</h1>
-<p>כאן יופיעו התמונות מהתיקיות שהעלית.</p>
+
+<h1>גלריית התמונות</h1>
+
+<div id="gallery" class="gallery-grid"></div>
+
 </div>
+
 </section>
 
+<script>
 
-<footer class="footer">
-<div class="container">
-© משפחת גולדשמיט
-</div>
-</footer>
+const folders = [
+"childhood",
+"youth",
+"twenties",
+"work",
+"second-marriage",
+"paintings",
+"last-years"
+]
 
-<script src="assets/js/app.js"></script>
+const gallery = document.getElementById("gallery")
+
+folders.forEach(folder => {
+
+for(let i=1;i<=20;i++){
+
+const img = document.createElement("img")
+
+img.src = `images/gallery/${folder}/${folder}-${String(i).padStart(2,"0")}.jpg`
+
+img.onerror = () => img.remove()
+
+gallery.appendChild(img)
+
+}
+
+})
+
+</script>
+
 </body>
 </html>
