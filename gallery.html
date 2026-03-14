@@ -66,31 +66,24 @@ transform:scale(1.03);
 
 <script>
 
-const folders = [
-"childhood",
-"youth",
-"twenties",
-"work",
-"second-marriage",
-"paintings",
-"last-years"
+const images = [
+
+"images/gallery/childhood/childhood-01.jpg",
+"images/gallery/childhood/childhood-02.jpg",
+"images/gallery/childhood/childhood-03.jpg",
+"images/gallery/childhood/childhood-04.jpg"
+
 ]
 
 const gallery = document.getElementById("gallery")
 
-folders.forEach(folder => {
-
-for(let i=1;i<=20;i++){
+images.forEach(src => {
 
 const img = document.createElement("img")
 
-img.src = `images/gallery/${folder}/${folder}-${String(i).padStart(2,"0")}.jpg`
-
-img.onerror = () => img.remove()
+img.src = src
 
 gallery.appendChild(img)
-
-}
 
 })
 
